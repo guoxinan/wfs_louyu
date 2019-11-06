@@ -1,0 +1,76 @@
+<div class="layui-header header">
+    <div class="layui-main mag0">
+        <a href="javascript:void(0);" class="logo">企业后台</a>
+        <!-- 显示/隐藏菜单 -->
+        <a href="javascript:;" class="seraph hideMenu icon-caidan"></a>
+        <!-- 顶级菜单 -->
+        <ul class="layui-nav mobileTopLevelMenus" mobile>
+            <li class="layui-nav-item">
+                <a href="javascript:;"><i class="seraph icon-caidan"></i><cite>菜单列表</cite></a>
+                <dl class="layui-nav-child">
+                    {volist name="top_node_list" id="vo" key="k"}
+                    {if $k == 1 }
+                    <dd data-menu="{$vo.alias}" data-id="{$vo.id}" data-title="{$vo.title}">
+                        {else /}
+                    <dd class="layui-this" data-menu="{$vo.alias}" data-id="{$vo.id}" data-title="{$vo.title}">
+                        {/if}
+                        <a href="javascript:;">
+                            <i class="layui-icon" data-icon="icon-icon10"></i>
+                            <cite>{$vo.title}</cite>
+                        </a>
+                    </dd>
+                    {/volist}
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav topLevelMenus" pc>
+            {volist name="top_node_list" id="vo" key="k"}
+            {if $k == 1 }
+            <li class="layui-nav-item layui-this" pc data-menu="{$vo.alias}" data-id="{$vo.id}" data-title="{$vo.title}">
+                {else /}
+            <li class="layui-nav-item" pc data-menu="{$vo.alias}" data-id="{$vo.id}" data-title="{$vo.title}">
+                {/if}
+                <a href="javascript:;">
+                    <i class="layui-icon" data-icon="icon-icon10"></i>
+                    <cite>{$vo.title}</cite>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+        <!-- 顶部右侧菜单 -->
+        <ul class="layui-nav top_menu">
+            <li class="layui-nav-item" pc>
+                <a href="javascript:;" class="clearCache"><i class="layui-icon" data-icon="&#xe640;">&#xe640;</i><cite>清除缓存</cite><span
+                        class="layui-badge-dot"></span></a>
+            </li>
+            <li class="layui-nav-item" id="userInfo">
+                <a href="javascript:;">
+                    <img src="/static/admin/images/face.jpg" class="layui-nav-img userAvatar" width="35" height="35">
+                    <cite class="adminName">{:session('admin.username')}</cite>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="javascript:;" data-url="{:url('admin/admin/detail')}">
+                            <i class="seraph icon-ziliao" data-icon="icon-ziliao"></i><cite>个人资料</cite>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;" data-url="{:url('admin/admin/password')}">
+                            <i class="seraph icon-xiugai" data-icon="icon-xiugai"></i><cite>修改密码</cite>
+                        </a>
+                    </dd>
+                    <dd pc>
+                        <a href="javascript:;" class="changeSkin">
+                            <i class="layui-icon">&#xe61b;</i><cite>更换皮肤</cite>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a href="{:url('admin/login/logout')}" class="signOut">
+                            <i class="seraph icon-tuichu"></i><cite>退出</cite>
+                        </a>
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>

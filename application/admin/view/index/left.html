@@ -1,0 +1,15 @@
+<div class="layui-side layui-bg-black">
+    <div class="user-photo">
+        <a class="img" title="我的头像" ><img src="/static/admin/images/face.jpg" class="userAvatar"></a>
+        <p>你好！<span class="userName">{:session('admin.username')}</span>, 欢迎登录</p>
+    </div>
+    <div class="navBar layui-side-scroll" id="navBar">
+        <ul class="layui-nav layui-nav-tree">
+            <li class="layui-nav-item layui-this">
+                <a href="javascript:;" data-url="{:url('admin/index/home')}">
+                    <i class="layui-icon" data-icon=""></i><cite>后台首页</cite>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

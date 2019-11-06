@@ -1,0 +1,20 @@
+{layout name="layout/main" /}
+
+{include file="wechat_menu/form" /}
+
+<script>
+    layui.use(['form', 'layer'], function () {
+        $ = layui.jquery;
+        var form = layui.form;
+        var layer = layui.layer;
+        var url_insert = "{:url('admin/wechat_menu/insert')}";
+        var url_update = "{:url('admin/wechat_menu/update')}";
+        var url_info = "{:url('admin/wechat_menu/info')}";
+        var id = "{$Think.get.id|default=0}";
+        var postData = {id:id};
+        //对页面数据进行初始化
+        form_obj.init(url_info, postData);
+        //监听提交
+        form_obj.submit(url_insert);
+    });
+</script>
