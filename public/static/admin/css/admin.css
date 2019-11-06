@@ -1,0 +1,62 @@
+.inline-input {
+    display: inline-block;
+    width: 100px;
+}
+
+.inline-button {
+    display: inline-block;
+}
+.div-img {
+    float: left;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin-left: 5px;
+}
+
+.del-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #ab00ff;
+    width: 18px;
+    height: 18px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.cover:after {
+    content: '封面图'
+}
+
+.cover1:after {
+    content: '进票项'
+}
+.cover2:after {
+    content: '提货证明'
+}
+.cover3:after {
+    content: '验收单'
+}
+.cover4:after {
+    content: '销项票'
+}
+
+.carousel:after {
+    content: '轮播图'
+}
+.custom-form {
+}
+
+.custom-form .layui-form-label {
+    width: 150px
+}
+
+#searchTitle {
+    width: 160px;
+    margin-top: -38px;
+    z-index: 2;
+    position:absolute;
+}

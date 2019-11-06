@@ -1,0 +1,14 @@
+{
+	"cmsName": "采购后台",
+	"version": "v2.0",
+	"author": "微风尚",
+	"homePage": "/index.html",
+	"server": "",
+	"dataBase": "",
+	"maxUpload": "2M",
+	"userRights": "超级管理员",
+	"description": "首页内容待定",
+	"powerby": "copyright @2019 微风尚",
+	"record": "京ICP备xxxxxxx号-1",
+	"keywords": "keywordskeywordskeywords"
+}
