@@ -1,4 +1,4 @@
-<?php /*a:3:{s:62:"D:\project\vfs_bms\application\admin\view\rent_seek\index.html";i:1573005997;s:58:"D:\project\vfs_bms\application\admin\view\layout\main.html";i:1573005997;s:57:"D:\project\vfs_bms\application\admin\view\inc\header.html";i:1573005997;}*/ ?>
+<?php /*a:3:{s:62:"D:\project\vfs_bms\application\admin\view\rent\index.html";i:1573005997;s:58:"D:\project\vfs_bms\application\admin\view\layout\main.html";i:1573005997;s:57:"D:\project\vfs_bms\application\admin\view\inc\header.html";i:1573005997;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
