@@ -1,0 +1,73 @@
+{layout name="layout/main" /}
+
+<blockquote class="layui-elem-quote quoteBox">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <div class="layui-input-inline">
+                <input name="title" type="text" class="layui-input" placeholder="请输入搜索新闻标题"/>
+            </div>
+            <div class="layui-input-inline">
+                <select name="status" id="status">
+                    <option value="">状态</option>
+                    {volist name='status_list' id="vo"}
+                    <option value="{$vo.id}">{$vo.title}</option>
+                    {/volist}
+                </select>
+            </div>
+            <a class="layui-btn search_btn" lay-submit lay-filter="tablelistReload" id="tablelistReload">搜索</a>
+        </div>
+    </form>
+</blockquote>
+
+<div id="boxTableNone">
+    <script type="text/html" id="tplToolbar">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-sm" id="buttonAdd" lay-event="buttonAdd">
+                <i class="layui-icon"></i>添加
+            </button>
+        </div>
+    </script>
+
+    <script type="text/html" id="toolbarHtml">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
+    </script>
+
+    <table class="layui-hide layui-table x-admin" id="tablelist" lay-filter="tablelist"></table>
+</div>
+<script type="text/javascript" src="/static/vfs/tablelistobj.js"></script>
+<script>
+    layui.use(['form', 'table', 'jquery', 'layer', 'upload'], function () {
+        var table = layui.table;
+        var form = layui.form;
+        var layer = layui.layer;
+        var $ = layui.jquery;
+        //渲染列表
+        tablelistobj.$ = $;
+        tablelistobj.tool_obj = {
+            lists: {href: "{:url('admin/news/lists')}", title: '列表'},
+            add: {href: "{:url('admin/news/add')}", title: '添加'},
+            edit: {href: "{:url('admin/news/edit')}", title: '编辑'},
+            del: {href: "{:url('admin/news/del')}", title: '删除'},
+        };
+        tablelistobj.cols = [[
+            //{field: 'id', type: 'checkbox', width: 80},
+            {field: 'id', width: 80, title: 'ID', sort: true},
+            {field: 'title', title: '标题'},
+            {field: 'cate_name', title: '分类'},
+            {field: 'orderby', title: '排序'},
+            {field: 'status_name', title: '状态',},
+            {field: '', title: '操作', align: 'center', toolbar: '#toolbarHtml', width: 150}
+        ]];
+        //操作按钮
+        tablelistobj.render(table);
+        //搜索表单
+        tablelistobj.search(table, form);
+        //操作按钮
+        tablelistobj.form_width = 700;
+        tablelistobj.form_height = 500;
+        tablelistobj.tool(table, layer);
+        //头工具栏事件
+        tablelistobj.toolbar(table, layer);
+    });
+</script>
