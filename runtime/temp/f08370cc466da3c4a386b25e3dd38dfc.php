@@ -1,3 +1,21 @@
+<?php /*a:4:{s:55:"D:\project\vfs_bms\application\admin\view\news\add.html";i:1573005997;s:58:"D:\project\vfs_bms\application\admin\view\layout\main.html";i:1573005997;s:57:"D:\project\vfs_bms\application\admin\view\inc\header.html";i:1573005997;s:56:"D:\project\vfs_bms\application\admin\view\news\form.html";i:1573110718;}*/ ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<title>采购总后台</title>
+
+<link rel="stylesheet" href="/static/admin/layui/css/layui.css" media="all" />
+<link rel="stylesheet" href="/static/admin/css/public.css" media="all" />
+<link rel="stylesheet" href="/static/admin/css/admin.css" media="all" />
+<link rel="stylesheet" href="/static/admin/css/font_400842_q6tk84n9ywvu0udi.css" media="all" />
+
+<script type="text/javascript" src="/static/admin/layui/layui.js"></script>
+<script type="text/javascript" src="/static/vfs/jquery.min.js"></script>
+</head>
+<body class="childrenBody">
+
+
 
 <form class="layui-form" style="width:80%;" lay-filter="formFilter">
     <div class="layui-form-item layui-row layui-col-xs12">
@@ -12,9 +30,9 @@
         <div class="layui-input-inline">
             <select name="one" id="selectOne" lay-filter="selectOne">
                 <option value="">请选择</option>
-                {volist name="one_list" id="vo"}
-                <option value="{$vo.id}">{$vo.title}</option>
-                {/volist}
+                <?php if(is_array($one_list) || $one_list instanceof \think\Collection || $one_list instanceof \think\Paginator): $i = 0; $__LIST__ = $one_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                <option value="<?php echo htmlentities($vo['id']); ?>"><?php echo htmlentities($vo['title']); ?></option>
+                <?php endforeach; endif; else: echo "" ;endif; ?>
             </select>
         </div>
         <div class="layui-input-inline">
@@ -74,9 +92,9 @@
     <div class="layui-form-item layui-row layui-col-xs12">
         <label class="layui-form-label">状态</label>
         <div class="layui-input-block">
-            {volist name="status_list" id="vo"}
-            <input type="radio" name="status" value="{$vo.id}" title="{$vo.title}">
-            {/volist}
+            <?php if(is_array($status_list) || $status_list instanceof \think\Collection || $status_list instanceof \think\Paginator): $i = 0; $__LIST__ = $status_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+            <input type="radio" name="status" value="<?php echo htmlentities($vo['id']); ?>" title="<?php echo htmlentities($vo['title']); ?>">
+            <?php endforeach; endif; else: echo "" ;endif; ?>
         </div>
     </div>
 
@@ -223,12 +241,12 @@
         var form = layui.form;
         var layer = layui.layer;
         var upload = layui.upload;
-        var url_insert = "{:url('admin/news/insert')}";
-        var url_update = "{:url('admin/news/update')}";
-        var url_upload = "{:url('admin/ajax/upload')}";
-        var url_cate_son = "{:url('admin/news_cate/sonList')}";
-        var url_info = "{:url('admin/news/info')}";
-        var id = "{$Think.get.id|default=0}";
+        var url_insert = "<?php echo url('admin/news/insert'); ?>";
+        var url_update = "<?php echo url('admin/news/update'); ?>";
+        var url_upload = "<?php echo url('admin/ajax/upload'); ?>";
+        var url_cate_son = "<?php echo url('admin/news_cate/sonList'); ?>";
+        var url_info = "<?php echo url('admin/news/info'); ?>";
+        var id = "<?php echo htmlentities((app('request')->get('id') ?: 0)); ?>";
         var postData = {id:id};
         //对页面数据进行初始化
         form_obj.init(url_info, postData, form);
@@ -247,3 +265,28 @@
        // upload_obj.carousel_del();
     });
 </script>
+
+
+<script>
+    layui.use(['form', 'layer', 'upload'], function () {
+        $ = layui.jquery;
+        var form = layui.form;
+        var layer = layui.layer;
+        var upload = layui.upload;
+        var url_insert = "<?php echo url('admin/news/insert'); ?>";
+        var url_update = "<?php echo url('admin/news/update'); ?>";
+        var url_upload = "<?php echo url('admin/ajax/upload'); ?>";
+        var url_info = "<?php echo url('admin/news/info'); ?>";
+        var id = "<?php echo htmlentities((app('request')->get('id') ?: 0)); ?>";
+        var postData = {id:id};
+        //对页面数据进行初始化
+        form_obj.init(url_info, postData, form);
+        //监听提交
+        form_obj.submit(url_insert);
+        //上传图片
+        upload_obj.init('uploadElem', url_upload);
+    });
+</script>
+
+</body>
+</html>
